@@ -1,7 +1,4 @@
 #![cfg(test)]
-
-use problem1::{sum, dedup, filter};
-
 // tests_student.rs
 
 
@@ -10,6 +7,8 @@ use problem1::{sum, dedup, filter};
 //
 
 // Part 1
+
+use crate::problem1::{sum, dedup, filter};
 
 // overflow on sum of very big numbers
 // appropriate response ?
@@ -44,4 +43,36 @@ fn test_sum_zero_and_negative() {
 fn test_sum_mix_numbers() {
 	let a = [-5, 0, 5, 10, -2, 4, 0];
 	assert_eq!(sum(&a), 12);
+}
+
+// Part 2
+#[test]
+fn test_dedup() {
+	let v = vec![0, 0, 1, 2, 1, 0, 3, 3];
+	assert_eq!(dedup(&v), vec![0,1,2,3]);
+}
+
+// Part 3
+
+// function is testing a condition
+fn is_odd(x: i32) -> bool {
+    (x % 2) != 0
+}
+
+fn is_even(x: i32) -> bool {
+	(x % 2) == 0
+}
+
+// tests below
+
+#[test]
+fn test_filter_odd() {
+	let v = vec![1, 2, 3, 4, 5];
+	assert_eq!(filter(&v, is_odd), vec![1, 3, 5]);
+}
+
+#[test]
+fn test_filter_even() {
+	let v = vec![0,1,2,3,4,5,6,7,8];
+	assert_eq!(filter(&v, is_even), vec![0,2,4,6,8]);
 }
