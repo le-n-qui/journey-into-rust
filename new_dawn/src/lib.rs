@@ -1,5 +1,7 @@
 pub mod problem1;
+pub mod problem2;
 pub mod tests_student;
+
 #[cfg(test)]
 mod tests {
     #[test]
