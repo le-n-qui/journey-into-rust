@@ -8,7 +8,9 @@
 
 // Part 1
 
+// Import other modules
 use crate::problem1::{sum, dedup, filter};
+use crate::problem2::sieve;
 
 // overflow on sum of very big numbers
 // appropriate response ?
@@ -75,4 +77,18 @@ fn test_filter_odd() {
 fn test_filter_even() {
 	let v = vec![0,1,2,3,4,5,6,7,8];
 	assert_eq!(filter(&v, is_even), vec![0,2,4,6,8]);
+}
+
+//
+// Problem 2
+//
+
+#[test]
+fn test_sieve_small_n() {
+	assert_eq!(sieve(7), vec![2,3,5]);
+}
+
+#[test]
+fn test_sieve_big_n() {
+	assert_eq!(sieve(30), vec![2,3,5,7,11,13,17,19,23,29]);
 }
