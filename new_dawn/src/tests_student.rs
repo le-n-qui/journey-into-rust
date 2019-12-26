@@ -11,6 +11,7 @@
 // Import other modules
 use crate::problem1::{sum, dedup, filter};
 use crate::problem2::sieve;
+use crate::problem3::hanoi;
 
 // overflow on sum of very big numbers
 // appropriate response ?
@@ -91,4 +92,22 @@ fn test_sieve_small_n() {
 #[test]
 fn test_sieve_big_n() {
 	assert_eq!(sieve(30), vec![2,3,5,7,11,13,17,19,23,29]);
+}
+
+//
+// Problem 3
+//
+
+#[test]
+fn test_hanoi_1_disks() {
+    let result = hanoi(1);
+    assert_eq!(vec![(1, 3)], result);
+    assert_eq!(1, result.len());
+}
+
+#[test]
+fn test_hanoi_3_disks() {
+	let result = hanoi(3);
+	assert_eq!(vec![(1,3),(1,2),(3,2),(1,3),(2,1),(2,3),(1,3)], result);
+	assert_eq!(7, result.len());
 }
