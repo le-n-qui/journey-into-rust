@@ -40,6 +40,14 @@ pub fn jenkins(bytes: &[u8]) -> u64 {
 /// data vector.
 pub fn bloom(data: &Vec<&str>, hashes: [fn(&u[u8]) -> u64; 3], value: &str) -> bool {
 	// TODO
-	unimplemented!();	
+	// Initialize a fixed size boolean array for storage; store all zeros in it
+	// Insert element from data vector
+	// Hash each element using each of hash function
+	// For each hashed value y = h(x), set the value at index y in array to 1
+	// Test if a value x is in the data vector
+	// Hash x using each of hash function
+	// If values at all of the hash indices in array are 1's, return "probably true"
+	// Otherwise, "definitely false" 
+
 
 }
