@@ -38,16 +38,32 @@ pub fn jenkins(bytes: &[u8]) -> u64 {
 /// data vector, and another value to query. Returns `true` if `value` is
 /// "probably" in the data vector and `false` if it is definitely not in the 
 /// data vector.
-pub fn bloom(data: &Vec<&str>, hashes: [fn(&u[u8]) -> u64; 3], value: &str) -> bool {
-	// TODO
+pub fn bloom(data: &Vec<&str>, hashes: [fn(&[u8]) -> u64; 3], value: &str) -> bool {
+	
 	// Initialize a fixed size boolean array for storage; store all zeros in it
+	let mut bool_arr = [0; 20];
+	
 	// Insert element from data vector
-	// Hash each element using each of hash function
-	// For each hashed value y = h(x), set the value at index y in array to 1
+	for element in data { 
+
+		// Hash each element using each of hash function
+		for h in hashes.iter() {
+		// For each hashed value y = h(x), set the value at index y in array to 1
+			let y = h(element.as_bytes());
+			bool_arr[y as usize % 20] = 1;
+		}
+	}
+
 	// Test if a value x is in the data vector
-	// Hash x using each of hash function
-	// If values at all of the hash indices in array are 1's, return "probably true"
-	// Otherwise, "definitely false" 
-
-
+	for h in hashes.iter() {
+		// Hash x using each of hash function
+		let y = h(value.as_bytes());
+		// If any value at array index returned by hash is not 1, return false
+		if bool_arr[y as usize % 20] != 1 {
+			return false;
+		}
+		
+	}
+	// after for loop and condition is passed for each hash function, return true
+	true
 }
