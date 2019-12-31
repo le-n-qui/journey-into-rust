@@ -118,10 +118,21 @@ fn test_hanoi_3_disks() {
 //
 
 #[test]
+fn test_bloom_foods() {
+	let data = vec!["apple", "blueberry", "carrot", "date", "eggplant",
+        "fig", "grapefruit"];
+    let hashes = [djb2, fnv, jenkins];
+    assert_eq!(true, bloom(&data, hashes, "carrot"));
+    assert_eq!(true, bloom(&data, hashes, "milk"));
+    assert_eq!(false, bloom(&data, hashes, "bread"));
+}
+
+#[test]
 fn test_bloom_topics() {
-	let topics = vec!["sports", "politics", "education", "finance", "technology", "mortgage", "love"];
+	let topics = vec!["sports", "politics", "education", "finance", "technology", 
+		"mortgage", "love"];
 	let hashes = [djb2, fnv, jenkins];
 	assert_eq!(true, bloom(&topics, hashes, "sports"));
-	assert_eq!(true, bloom(&topic, hashes, "investment"));
-	assert_eq!(false, bloom(&topic, hashes, "geography"));
+	assert_eq!(false, bloom(&topics, hashes, "investment"));
+	assert_eq!(false, bloom(&topics, hashes, "geography"));
 }
