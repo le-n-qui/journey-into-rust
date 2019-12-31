@@ -12,6 +12,7 @@
 use crate::problem1::{sum, dedup, filter};
 use crate::problem2::sieve;
 use crate::problem3::hanoi;
+use crate::problem4::{bloom, djb2, fnv, jenkins};
 
 // overflow on sum of very big numbers
 // appropriate response ?
@@ -110,4 +111,17 @@ fn test_hanoi_3_disks() {
 	let result = hanoi(3);
 	assert_eq!(vec![(1,3),(1,2),(3,2),(1,3),(2,1),(2,3),(1,3)], result);
 	assert_eq!(7, result.len());
+}
+
+//
+// Problem 4
+//
+
+#[test]
+fn test_bloom_topics() {
+	let topics = vec!["sports", "politics", "education", "finance", "technology", "mortgage", "love"];
+	let hashes = [djb2, fnv, jenkins];
+	assert_eq!(true, bloom(&topics, hashes, "sports"));
+	assert_eq!(true, bloom(&topic, hashes, "investment"));
+	assert_eq!(false, bloom(&topic, hashes, "geography"));
 }
