@@ -6,3 +6,9 @@
 pub struct BST {
 	root: Link,
 }
+
+// private Link enum
+enum Link {
+	Empty,
+	More(Box<Node>),
+}
