@@ -25,3 +25,9 @@ struct Node {
 	// Right child
 	right: Link,
 }
+
+impl BST {
+	pub fn new() -> Self {
+		BST { root: Link::Empty }
+	}
+}
