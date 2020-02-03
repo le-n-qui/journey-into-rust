@@ -30,4 +30,12 @@ impl BST {
 	pub fn new() -> Self {
 		BST { root: Link::Empty }
 	}
+
+	pub fn insert(&mut self, item: i32) -> bool {
+		implemented!()
+	}
+
+	pub fn search(&self, item: i32) -> bool {
+		implemented!()
+	}
 }
