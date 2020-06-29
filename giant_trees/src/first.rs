@@ -2,6 +2,8 @@
 // January 30, 2020
 // Qui Le
 
+use std::cmp::Ordering::*;
+
 // public struct for Binary Search Tree
 #[derive(Debug)]
 pub struct BST {
@@ -32,10 +34,54 @@ impl BST {
 	}
 
 	pub fn insert(&mut self, item: i32) -> bool {
-		implemented!()
+		BST::add(&mut self.root, item)
+	}
+
+	fn add(node: &mut Link, item: i32) -> bool {
+		let result; // true or false
+		match node {
+			Link::Empty => { 
+				let new_node = Box::new(
+					Node {
+						data: item,
+						left: Link::Empty,
+						right: Link::Empty,
+					}
+				);
+				*node = Link::More(new_node);
+				result = true;
+			},
+			Link::More(ref mut n) => {
+				match item.cmp(&n.data) {
+					Equal => { result = false; },
+					Less => { result = BST::add(&mut n.left, item); },
+					Greater => { result = BST::add(&mut n.right, item); },
+				}
+			},
+		} 
+		result
 	}
 
 	pub fn search(&self, item: i32) -> bool {
-		implemented!()
+		unimplemented!()
 	}
+}
+
+#[cfg(test)]
+mod tests {
+	// import BST struct
+	use super::BST;
+
+    #[test]
+    fn insert_into_empty_tree() {
+    	let mut t = BST::new();
+    	println!("{:?}", t);
+    	
+    	assert_eq!(true, t.insert(10));
+    	assert_eq!(true, t.insert(5));
+    	assert_eq!(true, t.insert(15));
+
+    	// Insert number that is already in the tree
+    	assert_eq!(false, t.insert(15));
+    }
 }
