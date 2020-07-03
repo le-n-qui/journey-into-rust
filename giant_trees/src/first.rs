@@ -65,6 +65,10 @@ impl BST {
 	pub fn search(&self, item: i32) -> bool {
 		unimplemented!()
 	}
+
+	fn find(node: & Link, item: i32) -> bool {
+		unimplemented!()
+	}
 }
 
 #[cfg(test)]
