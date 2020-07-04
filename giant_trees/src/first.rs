@@ -76,7 +76,7 @@ impl BST {
 				// Compare item with data within reference n
 				// cmp() returns three options of Ordering enum
 				match item.cmp(&n.data) {
-					Equal => {};
+					Equal => { result = true; };
 					Less => {};
 					Greater => {};
 				}
