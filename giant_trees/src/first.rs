@@ -99,8 +99,10 @@ mod tests {
     	assert_eq!(true, t.insert(10));
     	assert_eq!(true, t.insert(5));
     	assert_eq!(true, t.insert(15));
+    	assert_eq!(true, t.insert(9));
 
     	// Insert number that is already in the tree
+    	assert_eq!(false, t.insert(10));
     	assert_eq!(false, t.insert(15));
     }
 
