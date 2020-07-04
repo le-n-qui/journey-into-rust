@@ -63,7 +63,7 @@ impl BST {
 	}
 
 	pub fn search(&self, item: i32) -> bool {
-		unimplemented!()
+		BST::find(& self.root, item)
 	}
 
 	fn find(node: & Link, item: i32) -> bool {
