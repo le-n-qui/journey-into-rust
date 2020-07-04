@@ -67,7 +67,12 @@ impl BST {
 	}
 
 	fn find(node: & Link, item: i32) -> bool {
-		unimplemented!()
+		let result;
+		match node {
+			Link::Empty => {};
+			Link::More(ref n) => {};
+		}
+		result
 	}
 }
 
