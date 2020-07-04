@@ -67,9 +67,11 @@ impl BST {
 	}
 
 	fn find(node: & Link, item: i32) -> bool {
-		let result;
+		let result; // is the search successful?
 		match node {
-			Link::Empty => {};
+			// if node is empty
+			Link::Empty => { result = false; };
+			// else look further into reference n 
 			Link::More(ref n) => {};
 		}
 		result
