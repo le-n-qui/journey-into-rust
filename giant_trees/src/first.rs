@@ -72,7 +72,15 @@ impl BST {
 			// if node is empty
 			Link::Empty => { result = false; };
 			// else look further into reference n 
-			Link::More(ref n) => {};
+			Link::More(ref n) => {
+				// Compare item with data within reference n
+				// cmp() returns three options of Ordering enum
+				match item.cmp(&n.data) {
+					Equal => {};
+					Less => {};
+					Greater => {};
+				}
+			};
 		}
 		result
 	}
