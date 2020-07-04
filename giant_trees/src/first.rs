@@ -94,13 +94,32 @@ mod tests {
     #[test]
     fn insert_into_empty_tree() {
     	let mut t = BST::new();
-    	println!("{:?}", t);
     	
+    	// Add nodes
     	assert_eq!(true, t.insert(10));
     	assert_eq!(true, t.insert(5));
     	assert_eq!(true, t.insert(15));
 
     	// Insert number that is already in the tree
     	assert_eq!(false, t.insert(15));
+    }
+
+    #[test]
+    fn search_item_in_tree() {
+    	let mut t = BST::new();
+
+    	// Add new nodes
+    	t.insert(10);
+    	t.insert(5);
+    	t.insert(15);
+    	t.insert(2);
+    	t.insert(8);
+    	t.insert(12);
+    	t.insert(20);
+
+    	// Search item
+    	assert_eq!(true, t.search(8));
+    	assert_eq!(true, t.search(20));
+    	assert_eq!(false, t.search(9));
     }
 }
