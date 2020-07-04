@@ -70,17 +70,17 @@ impl BST {
 		let result; // is the search successful?
 		match node {
 			// if node is empty
-			Link::Empty => { result = false; };
+			Link::Empty => { result = false; },
 			// else look further into reference n 
 			Link::More(ref n) => {
 				// Compare item with data within reference n
 				// cmp() returns three options of Ordering enum
 				match item.cmp(&n.data) {
-					Equal => { result = true; };
-					Less => {};
-					Greater => {};
+					Equal => { result = true; },
+					Less => { result = BST::find(& n.left, item); },
+					Greater => {},
 				}
-			};
+			},
 		}
 		result
 	}
