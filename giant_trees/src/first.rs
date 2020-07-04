@@ -78,7 +78,7 @@ impl BST {
 				match item.cmp(&n.data) {
 					Equal => { result = true; },
 					Less => { result = BST::find(& n.left, item); },
-					Greater => {},
+					Greater => { result = BST::find(& n.right, item); },
 				}
 			},
 		}
